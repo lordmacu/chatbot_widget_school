@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>BotMan Widget Demo</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" type="text/css">
+
+    <!-- Styles -->
+    <style>
+        body {
+            font-family: "Varela Round", sans-serif;
+            margin: 0;
+            padding: 0;
+            background:white;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .content {
+            text-align: center;
+        }
+
+        .logo {
+            margin-right: 40px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="content">
+ 
+    </div>
+</div>
+
+
+<script>
+    var botmanWidget = {
+        chatServer: 'http://localhost/botman',
+        frameEndpoint: 'chat.html'
+    };
+</script>
+<script id="botmanWidget" src='js/widget.js'></script>
+
+<script>
+ 
+ window.addEventListener("load", function(event) {
+     botmanChatWidget.sayAsBot('Bienvenido a TutoTIC, estamos encantados de ayudarte');
+      setTimeout(function () {
+          botmanChatWidget.whisper("Start conversation")
+    }, 1000);
+
+
+  });
+</script>
+</body>
+</html>

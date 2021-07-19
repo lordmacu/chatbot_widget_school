@@ -1,0 +1,19 @@
+{
+	"compilerOptions": {
+                "types": [] ,
+		"sourceMap": true,
+		"noEmit": false,
+		"noImplicitAny": true,
+		"strictNullChecks": false,
+		"module": "es6",
+		"jsx": "react",
+		"jsxFactory": "h",
+		"target": "es5",
+		"allowJs": true,
+		"moduleResolution": "node",
+		"lib": ["dom", "es5", "scripthost", "es2015.promise"]
+	},
+	"include": [
+		"./src/**/*"
+	]
+}
