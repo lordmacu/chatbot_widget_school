@@ -26,16 +26,51 @@ export default class Action extends MessageType {
 
     performAction(action: IAction) {
         botman.callAPI(action.value, true, null, (msg: IMessage) => {
-            this.setState({ attachmentsVisible : false});
-            this.props.messageHandler({
-                text: msg.text,
-                type: msg.type,
-                timeout: msg.timeout,
-                actions: msg.actions,
-                attachment: msg.attachment,
-                additionalParameters: msg.additionalParameters,
-                from: 'chatbot'
-            });
+
+            let jsonMessage =JSON.parse( JSON.stringify(msg));
+            console.log("aquii esta el message ",jsonMessage.callback_id);
+            this.setState({ attachmentsVisible: false });
+            
+            let type = msg.type;
+            console.log("asdfasdf asd dada--",msg);
+            if (jsonMessage.callback_id!= "do_you_want") {
+                this.props.messageHandler({
+                    text: action.text,
+                    type: "text",
+                    timeout: msg.timeout,
+                    actions: [],
+                    attachment:null,
+                    additionalParameters: null,
+                    from: 'visitor'
+                });
+            }
+
+            if (jsonMessage.callback_id== "do_you_want") {
+                 setTimeout(() => {
+                      this.props.messageHandler({
+                        text: msg.text,
+                        type: msg.type,
+                        timeout: msg.timeout,
+                        actions: msg.actions,
+                        attachment: msg.attachment,
+                        additionalParameters: msg.additionalParameters,
+                        from: 'chatbot'
+                    });
+                }, 2000);
+            } else {
+                this.props.messageHandler({
+                    text: msg.text,
+                    type: msg.type,
+                    timeout: msg.timeout,
+                    actions: msg.actions,
+                    attachment: msg.attachment,
+                    additionalParameters: msg.additionalParameters,
+                    from: 'chatbot'
+                });
+            }
+          
+
+           
         }, null);
     }
 }
