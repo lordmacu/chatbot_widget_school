@@ -34,9 +34,6 @@ html, body {
     display: flex;
     color: #000000;
 }
-.visitor .description{
-max-width: 100%;
-}
 
 .visitor {
     -webkit-box-pack: end;
