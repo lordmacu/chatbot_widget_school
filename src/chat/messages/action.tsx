@@ -5,6 +5,9 @@ import { IMessageTypeProps, IAction, IMessage } from '../../typings';
 
 export default class Action extends MessageType {
 
+
+
+    
     render(props: IMessageTypeProps) {
         const message = props.message;
 
