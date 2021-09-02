@@ -25,24 +25,31 @@ export default class Action extends MessageType {
     }
 
     performAction(action: IAction) {
-        botman.callAPI(action.value, true, null, (msg: IMessage) => {
 
-            let jsonMessage =JSON.parse( JSON.stringify(msg));
-            console.log("aquii esta el message ",jsonMessage.callback_id);
-            this.setState({ attachmentsVisible: false });
-            
-            let type = msg.type;
-            console.log("asdfasdf asd dada--",msg);
-            if (jsonMessage.callback_id!= "do_you_want") {
-                this.props.messageHandler({
+  
+ this.props.messageHandler({
                     text: action.text,
                     type: "text",
-                    timeout: msg.timeout,
+                    timeout: 2000,
                     actions: [],
                     attachment:null,
                     additionalParameters: null,
                     from: 'visitor'
                 });
+
+        console.log(action,"esta es la acción");
+
+        botman.callAPI(action.value, true, null, (msg: IMessage) => {
+            
+
+            let jsonMessage =JSON.parse( JSON.stringify(msg));
+          //  console.log("aquii esta el message ",jsonMessage.callback_id);
+            this.setState({ attachmentsVisible: false });
+            
+            let type = msg.type;
+            //console.log("asdfasdf asd dada--",msg);
+            if (jsonMessage.callback_id!= "do_you_want") {
+               
             }
 
             if (jsonMessage.callback_id== "do_you_want") {
