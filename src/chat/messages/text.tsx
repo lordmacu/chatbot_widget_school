@@ -19,6 +19,8 @@ export default class TextType extends MessageType {
                     ""
                 )}
 
+                
+
                 <p class="description" dangerouslySetInnerHTML={textObject} />
 
                 {attachment && attachment.type === "image" ? (
